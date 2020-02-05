@@ -9,6 +9,10 @@
   <groupId>ch.tinyknightofcoding</groupId>
   <artifactId>game-of-life</artifactId>
   <version>1.0-SNAPSHOT</version>
+
+  <modules>
+    <module>game-of-life-core</module>
+  </modules>
   <packaging>pom</packaging>
 
   <name>game-of-life</name>
@@ -38,12 +42,6 @@
       <groupId>org.jetbrains.kotlin</groupId>
       <artifactId>kotlin-stdlib-jdk8</artifactId>
       <version>${kotlin.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.junit.jupiter</groupId>
-      <artifactId>junit-jupiter-api</artifactId>
-      <version>${junit.version}</version>
-      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>

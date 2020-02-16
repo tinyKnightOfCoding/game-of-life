@@ -7,11 +7,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="game-of-life-core" />
+        <module name="game-of-life-gui" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="game-of-life" target="1.5" />
       <module name="game-of-life-core" target="1.5" />
+      <module name="game-of-life-gui" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

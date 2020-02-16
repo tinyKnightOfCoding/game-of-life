@@ -12,6 +12,7 @@
 
   <modules>
     <module>game-of-life-core</module>
+    <module>game-of-life-gui</module>
   </modules>
   <packaging>pom</packaging>
 
@@ -33,6 +34,11 @@
         <groupId>org.openjfx</groupId>
         <artifactId>javafx-controls</artifactId>
         <version>${javafx.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>ch.tinyknightofcoding</groupId>
+        <artifactId>game-of-life-core</artifactId>
+        <version>${project.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>

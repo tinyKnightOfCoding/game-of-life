@@ -2,6 +2,8 @@ package ch.tinyknightofcoding.gol.gui
 
 import ch.tinyknightofcoding.gol.core.GameOfLife
 import javafx.event.EventHandler
+import javafx.geometry.Insets
+import javafx.geometry.Pos
 import javafx.scene.Group
 import javafx.scene.control.Button
 import javafx.scene.control.Label
@@ -12,38 +14,37 @@ import javafx.scene.layout.HBox
 import javafx.scene.layout.VBox
 import javafx.stage.Stage
 
+val SIZE_OPTIONS = arrayOf(10, 20, 30)
+
 class SetupGameOfLifeView(private val stage: Stage) {
 
-  private var size = 16
+  private var selectedSize = SIZE_OPTIONS[0]
 
   private val group = Group().apply {
     children += VBox().apply {
-      children += Label("Size")
       children += HBox().apply {
+        alignment = Pos.BASELINE_LEFT
+        padding = Insets(4.0, 4.0, 4.0, 4.0)
+        children += Label("Size")
         val sizeToggleGroup = ToggleGroup()
-        children += RadioButton("16").apply {
-          userData = 16
-          isSelected = size == 16
-          toggleGroup = sizeToggleGroup
-        }
-        children += RadioButton("32").apply {
-          userData = 32
-          isSelected = size == 32
-          toggleGroup = sizeToggleGroup
-        }
-        children += RadioButton("48").apply {
-          userData = 48
-          isSelected = size == 48
-          toggleGroup = sizeToggleGroup
+        children += SIZE_OPTIONS.map { size ->
+          RadioButton("$size").apply {
+            userData = size
+            isSelected = size == selectedSize
+            toggleGroup = sizeToggleGroup
+            padding = Insets(4.0, 4.0, 4.0, 4.0)
+          }
         }
         sizeToggleGroup.selectedToggleProperty().addListener { ov, _, _ ->
-          size = ov.value.userData as Int
+          selectedSize = ov.value.userData as Int
         }
       }
-      children += Button("Create").apply {
-        onMouseClicked = EventHandler<MouseEvent> { create() }
+      children += HBox().apply {
+        children += Button("Create").apply {
+          onMouseClicked = EventHandler<MouseEvent> { create() }
+        }
+        padding = Insets(4.0, 4.0, 4.0, 4.0)
       }
-
     }
   }
 
@@ -54,6 +55,6 @@ class SetupGameOfLifeView(private val stage: Stage) {
   }
 
   private fun create() {
-    GameOfLifeView(stage, GameOfLife(size))
+    GameOfLifeView(stage, GameOfLife(selectedSize))
   }
 }
